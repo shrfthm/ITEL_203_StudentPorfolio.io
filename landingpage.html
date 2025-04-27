@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="landingpage.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <header>
+        <div class="profile-header">
+            <p class="left">Portfolio</p>
+            <p class="subject">Web Development</p>
+            <p class="right">BSIT - 2A</p>
+        </div>
+    </header>
+    <div class="profiles-container">
+        <div class="row">
+            <div class="profile" onclick="navigateWithFade('elle.html')">
+                <img src="/images/front.jfif" alt="Elle">
+                <p>Elle</p>
+            </div>
+            <div class="profile" onclick="navigateWithFade('km.html')">
+                <img src="/images/landing.jpg" alt="KM">
+                <p>KM</p>
+            </div>
+            <div class="profile" onclick="navigateWithFade('jas.html')">
+                <img src="/images/jaslandingpage.jpg" alt="Jas">
+                <p>Jas</p>
+            </div>
+        </div>
+        <div class="row bottom-row">
+            <div class="profile" onclick="navigateWithFade('tomi.html')">
+                <img src="/images/unnamed.jpg" alt="Tomi">
+                <p>Tomi</p>
+            </div>
+            <div class="profile" onclick="navigateWithFade('chaun.html')">
+                <img src="/images/pic para sa landing page.jpg" alt="Chaun">
+                <p>Chaun</p>
+            </div>
+        </div>
+        <h3 class="introduction">Access granted—glad you made it. You're in good company! This isn't just a portfolio, it's our digital domain. Five tech minds, one shared system. <br><em>Click on any avatar to decrypt our stories, goals, and what makes our code tick.</em></h3>
+        <script>
+            function navigateWithFade(page) {
+                document.body.classList.add("fade-out"); // Start fade effect
+                setTimeout(() => {
+            window.location.href = page; // Redirect after fade
+            }, 500); // Delay matches CSS transition (0.5s)
+        }
+        </script>
+    </div>
+</body>
+</html>

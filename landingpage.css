@@ -1,0 +1,104 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+header {
+    background-color: black;
+    padding: 10px 20px;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.left {
+    margin: 0;
+    font-size: 25px;
+}
+
+.right {
+    margin: 0;
+    font-size: 25px;
+}
+
+.subject {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.profiles-container {
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 10px;
+}
+
+.bottom-row {
+    gap: 50px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile img {
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile img:hover {
+    transform: scale(1.1);
+}
+
+.profile p {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.introduction {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    max-width: 90%;
+}

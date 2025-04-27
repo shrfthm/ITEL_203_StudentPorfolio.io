@@ -1,0 +1,931 @@
+body{
+    background-color: #fffdd0; /* Light cream background */
+    margin: 0;
+    padding: 0;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #f8cfcf;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-size: 24px;
+    color: #fff;
+    opacity: 1; /* Button is visible by default */
+}
+
+.home-button:hover {
+    background-color: #ffafaf;
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.home-button.hidden {
+    opacity: 0; /* Makes the button invisible */
+    pointer-events: none; /* Prevents it from being clickable */
+    transform: translateY(-10px); /* Moves it slightly up for a smooth effect */
+}
+
+
+.profiles-container{
+    text-align: center;
+    position: relative;
+}
+
+.profiles-container h4{
+    font-size: 25px; 
+    color: black; 
+    margin-top: 20px;
+    padding-bottom: 5px;
+    font-family: 'Playfair Display', serif; /* Font style for name */
+}
+
+.bio{
+    font-size: 18px; 
+    color: black; 
+    margin-top: 10px;
+    font-family: 'Dancing Script', cursive; /* Font style for bio */
+    font-weight: 400; /* Font weight for bio */
+    padding-top: 1px;
+}
+
+.cover-photo{
+    width: 100%; 
+    height: 350px; 
+    object-fit: cover;
+}
+
+.profile-picture{
+    width: 180px; height: 180px; 
+    border-radius: 50%; 
+    position: absolute; 
+    top: 60%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    border: 2px solid #d6a2a2; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profiles-container h4{
+    margin-top: 160px;
+}
+
+.details-container{
+    padding: 50px;
+    margin: 15px auto;
+    max-width: 900px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: #d6a2a2 3px solid;
+    font-family: Arial, sans-serif;
+}
+
+.details h4{
+    font-size: 18px; 
+    color: black; 
+    margin-top: 20px;
+    padding-bottom: 5px;
+    font-family: 'Playfair Display', serif; /* Font style for name */
+
+}
+
+/* General Styles */
+.features-container {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    background-color: #fffdd0;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Feature Section Grid */
+.feature-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Each Feature Box */
+.feature {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Zoom Effect */
+.feature:hover img {
+    transform: scale(1.05);
+}
+
+/* Slideshow Controls */
+.slideshow-container {
+    position: relative;
+}
+
+.slide {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: none;
+}
+
+.slide:first-child {
+    display: block;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.prev {
+    left: 5px;
+}
+
+.next {
+    right: 5px;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Icon Styling */
+.icon-container {
+    text-align: center;
+    font-size: 20px;  /* Make them stand out */
+    margin-top: 15px;
+    opacity: 0.8;
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
+}
+
+.icon-container:hover {
+    transform: scale(1.2);  /* Slight zoom effect */
+    opacity: 1;
+}
+
+/* Lightbox Styling */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+/* Next & Previous buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+.hobbies-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    padding: 30px 0;
+    margin-bottom: 100px;
+}
+
+
+.hobbies-card {
+    width: 800px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+/* Header (Profile Section) */
+.card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+.profile-pic {
+    width: 70px; /* Increased size */
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #d6a2a2; /* Light pink border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.username {
+    font-weight: bold;
+    margin-left: 10px;
+    flex-grow: 1; /* Pushes menu icon to the right */
+    font-size: 20px; /* Slightly larger text */
+}
+
+/* Hobbies Section */
+.hobbies-container {
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+
+.hobbies-container h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+.hobbies-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+/* Hobbies List (Left Side) */
+.hobby-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.hobby-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.hobby-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+/* Background Image (Right Side) */
+.hobby-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.hobby-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Centering Only the Education Section */
+.education-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 600px; /* Larger height */
+    padding: 30px 0; /* Adds a small gap but removes large spacing */
+    margin-bottom: 100px; /* Adds space before the footer */
+}
+
+/* Education Container */
+.education-container {
+    width: 800px; /* Adjusted width for better proportion */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+/* Header (Profile Section) */
+.card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 70px; /* Increased size */
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #d6a2a2;
+}
+
+.username {
+    font-weight: bold;
+    margin-left: 10px;
+    flex-grow: 1; /* Pushes menu icon to the right */
+    font-size: 20px; /* Slightly larger text */
+}
+
+/* Education Section */
+.education {
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+
+.education h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+.education-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+/* Education List (Left Side) */
+.education-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.education-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.education-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+/* Background Image (Right Side) */
+.education-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.education-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Centering Only the Achievements Section */
+.achievements-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 600px; /* Larger height */
+    padding: 30px 0; /* Adds a small gap but removes large spacing */
+    margin-bottom: 100px; /* Adds space before the footer */
+}
+
+/* Achievements Container */
+.achievements-container {
+    width: 800px; /* Adjusted width for better proportion */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+/* Header (Profile Section) */
+.card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 70px; /* Increased size */
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #d6a2a2;
+}
+
+.username {
+    font-weight: bold;
+    margin-left: 10px;
+    flex-grow: 1; /* Pushes menu icon to the right */
+    font-size: 20px; /* Slightly larger text */
+}
+
+/* Achievements Section */
+.achievements {
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+
+.achievements h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+.achievements-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+/* Achievements List (Left Side) */
+.achievements-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.achievements-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.achievements-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+/* Background Image (Right Side) */
+.achievements-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.achievements-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Centering Only the Skills Section */
+.skills-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 600px; /* Larger height */
+    padding: 30px 0; /* Adds a small gap but removes large spacing */
+    margin-bottom: 100px; /* Adds space before the footer */
+}
+
+/* Larger Skills Container */
+.skills-container {
+    width: 800px; /* Adjusted width for better proportion */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+/* Header (Profile Section) */
+.card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 70px; /* Increased size */
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #d6a2a2;
+}
+
+.username {
+    font-weight: bold;
+    margin-left: 10px;
+    flex-grow: 1; /* Pushes menu icon to the right */
+    font-size: 20px; /* Slightly larger text */
+}
+
+/* Skills Section */
+.skills {
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+.skills h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+/* Flexbox for layout */
+.skills-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+/* Skills List (Left Side) */
+.skills-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.skills-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* Increased icon size */
+.skills-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+/* Larger Skills Image (Right Side) */
+.skills-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skills-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    font-size: 22px;
+    gap: 20px;
+}
+
+.icon {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-right: 15px; /* Adds space between icons */
+}
+
+.icon:last-child {
+    margin-right: 0; /* Removes extra spacing for the last icon */
+}
+
+.icon:hover {
+    color: #d6a2a2; /* Light pink on hover */
+}
+
+.save {
+    margin-left: auto; /* Pushes save icon to the right */  
+}
+
+.menu {
+    font-size: 22px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.menu:hover {
+    color: #d6a2a2;
+}
+
+.technical-skills-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 600px; /* Larger height */
+    padding: 30px 0; /* Adds a small gap but removes large spacing */
+    margin-bottom: 100px; /* Adds space before the footer */
+}
+
+.technical-skills-container {
+    width: 800px; /* Adjusted width for better proportion */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+.technical-skills{
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+
+.technical-skills h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+.technical-skills-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+.technical-skills-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.technical-skills-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.technical-skills-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+.technical-skills-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.technical-skills-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.goals-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width */
+    height: 600px; /* Larger height */
+    padding: 30px 0; /* Adds a small gap but removes large spacing */
+    margin-bottom: 100px; /* Adds space before the footer */
+}
+
+.goals-container {
+    width: 800px; /* Adjusted width for better proportion */
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #d6a2a2;
+}
+
+.goals {
+    width: 100%;
+    background: #ffedfa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure the title stays on top */
+}
+
+.goals h2 {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px; /* Adds space below the title */
+}
+
+.goals-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px; /* Adds spacing between text and image */
+}
+
+.goals-list {
+    flex: 1;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.goals-list p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.goals-list i {
+    color: #b47b77; /* Softer pink */
+    font-size: 20px;
+}
+
+.goals-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.goals-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.footer-section {
+    padding-top: 20px;
+    background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    padding: 10px 0; 
+    position: fixed; 
+    bottom: -50px; /* Initially hidden below the screen */
+    width: 100%; 
+    font-size: 14px;
+    transition: bottom 0.3s ease-in-out;
+}
+
+.footer-section.show {
+    bottom: 0; /* Moves up when scrolling */
+}
